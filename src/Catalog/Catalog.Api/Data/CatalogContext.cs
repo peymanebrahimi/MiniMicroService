@@ -15,12 +15,12 @@ namespace Catalog.Api.Data
 
             Products = database.GetCollection<Product>(settings.CollectionName);
 
-            CatalogContexttSeed.SeedData(Products);
+            CatalogContextSeed.SeedData(Products);
         }
         public IMongoCollection<Product> Products { get; }
     }
 
-    public static class CatalogContexttSeed
+    public static class CatalogContextSeed
     {
         public static void SeedData(IMongoCollection<Product> products)
         {
