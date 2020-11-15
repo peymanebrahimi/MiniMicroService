@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Basket.Api.Entities;
 using Basket.Api.Repositories;
+using EventBusRabbitMQ.Common;
+using EventBusRabbitMQ.Events;
+using EventBusRabbitMQ.Producer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -70,7 +73,7 @@ namespace Basket.Api.Controllers
             var basketRemoved = await _repository.DeleteBasket(basketCheckout.UserName);
             if (!basketRemoved)
             {
-                _logger.LogError("Basket can not deleted");
+                _logger.LogError("Basket can not be deleted");
                 return BadRequest();
             }
 
